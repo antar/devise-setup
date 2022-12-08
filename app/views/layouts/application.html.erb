@@ -11,12 +11,17 @@
   </head>
 
   <body>
-    <% if user_signed_in? %>
-      <h1>Hello <%= current_user.email %></h1>
-          <p id="notice"><%= notice %></p>
-      <%= button_to "Logout", destroy_user_session_url, method: :delete %>
-    <% end %>
-    <%= yield %>
-    <p id="alert"><%= alert %></p>
+    <div class="h-100 d-flex flex-column align-items-center justify-content-center">
+      <% if user_signed_in? %>
+        <h1>Hello <%= current_user.email %></h1>
+        <%= button_to "Logout", destroy_user_session_url, method: :delete, class: "btn btn-primary btn-block w-100" %>
+      <% end %>
+      <%= yield %>
+      <% if !alert.nil? %>
+        <div class="alert alert-warning" role="alert">
+          <p id="alert"><%= alert %></p>
+        </div>      
+      <% end %>
+    </div>
   </body>
 </html>

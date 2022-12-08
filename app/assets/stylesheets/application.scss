@@ -13,4 +13,17 @@
  *= require_tree .
  *= require_self
  */
- @import "bootstrap";
+@import "bootstrap";
+
+html,
+body {
+    height: 100%
+}
+
+.field {
+    margin: 10px;
+}
+
+.actions {
+    margin: 10px;
+}
