@@ -1,0 +1,28 @@
+<div class="header">
+    <div class="container">
+    <h1>Notes</h1>
+    </div>
+</div>
+
+<div class="main">
+    <div class="container">
+    
+        <%= form_for(@new_note) do |f| %>
+          <div class="field"> 
+            <%= f.label :note %><br> 
+            <%= f.text_field :comment %> 
+          </div> 
+          <div class="actions"> 
+            <%= f.submit "Submit", class: "btn btn-primary btn-block w-100" %> 
+          </div> 
+        <% end %>
+
+    
+    <ul class="comments">
+        <% @all_notes.each do |p| %>
+        <li><%= p.comment %></li>
+        <% end %>
+    </ul>
+
+    </div>
+</div>
