@@ -5,19 +5,17 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
   </head>
 
   <body>
     <div class="h-100 d-flex flex-column align-items-center justify-content-center">
       <%= yield %>
       <% if user_signed_in? %>
-        <%= button_to "Logout", destroy_user_session_url, method: :delete, class: "btn btn-secondary btn-block w-100" %>
+        <%= button_to "Logout", destroy_user_session_url, method: :delete, class: "btn btn-secondary btn-block" %>
       <% end %>
       <% if !alert.nil? %>
-        <div class="alert alert-warning" role="alert">
+        <div class="alert alert-warning mt-2" role="alert">
           <p id="alert"><%= alert %></p>
         </div>      
       <% end %>

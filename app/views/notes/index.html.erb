@@ -1,28 +1,30 @@
 <div class="header">
     <div class="container">
-    <h1>Notes</h1>
+    <h1>Quick Note</h1>
     </div>
 </div>
 
 <div class="main">
-    <div class="container">
+    <div class="container mb-2">
     
-        <%= form_for(@new_note) do |f| %>
-          <div class="field"> 
-            <%= f.label :note %><br> 
-            <%= f.text_field :comment %> 
+        <%= form_for(@note) do |f| %>
+          <div class="field list-group">
+            <%= f.text_field :comment, class: "list-group-item" %> 
           </div> 
-          <div class="actions"> 
-            <%= f.submit "Submit", class: "btn btn-primary btn-block w-100" %> 
+          <div class="text-center mt-2"> 
+            <%= f.submit "Add", class: "btn btn-primary btn-block" %> 
           </div> 
         <% end %>
 
     
-    <ul class="comments">
-        <% @all_notes.each do |p| %>
-        <li><%= p.comment %></li>
+    <ul class="list-group text-center mt-2">
+        <% @notes.each do |note| %>
+          <li class="list-group-item rounded mb-2"><%= note.comment %></li>
+        <% end %>
+        <% if !@notes.empty? %>
+          <%= button_to 'Delete All', @note, method: :delete, class: "btn btn-danger btn-block mb-2" %>  
         <% end %>
     </ul>
 
-    </div>
+    </div>  
 </div>

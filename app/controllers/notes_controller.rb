@@ -1,13 +1,18 @@
 class NotesController < ApplicationController
     def index
-        @new_note = Note.new
-        @all_notes = Note.where(user_id: current_user.id).order(created_at: :desc).all
+        @note = Note.new
+        @notes = Note.where(user_id: current_user.id).order(created_at: :desc).all
       end
       def create
-        @new_note = Note.new(comment: note_params["comment"], user_id: current_user.id)
-        if @new_note.save
+        @note = Note.new(comment: note_params["comment"], user_id: current_user.id)
+        if @note.save
           redirect_to root_path
         end
+      end
+      def destroy
+        @notes = Note.all
+        @notes.destroy_all
+        redirect_to root_path
       end
       private 
         def note_params
