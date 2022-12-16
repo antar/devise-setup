@@ -10,7 +10,7 @@ class NotesController < ApplicationController
         end
       end
       def destroy
-        @notes = Note.all
+        @notes = Note.where(user_id: current_user.id).all
         @notes.destroy_all
         redirect_to root_path
       end
